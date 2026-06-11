@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Vida & Hidratação</title>
+    <style>
+        /* Estilos Globais e Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f7f9; /* Tom azulado bem claro e refrescante */
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho (Header) */
+        header {
+            background-color: #e3f2fd;
+            border-bottom: 4px solid #00a8cc; /* Linha divisória em tom ciano */
+            padding: 25px 0;
+            text-align: center;
+        }
+
+        .logo {
+            font-family: 'Georgia', serif;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #0077b6; /* Azul água escuro */
+            text-decoration: none;
+        }
+
+        .data-atual {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        /* Menu de Navegação com Links Externos */
+        nav {
+            background-color: #0077b6; /* Fundo azul principal */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-container li a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 15px 20px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background 0.3s;
+        }
+
+        .nav-container li a:hover {
+            background-color: #0096c7; /* Azul ligeiramente mais claro no hover */
+        }
+
+        /* Layout Principal */
+        .main-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+        }
+
+        /* Área de Notícias (Esquerda) */
+        .noticia-principal {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 119, 182, 0.08);
+            margin-bottom: 20px;
+        }
+
+        .noticia-principal img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .categoria {
+            color: #00b4d8;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        .noticia-principal h2 {
+            font-family: 'Georgia', serif;
+            font-size: 2.2rem;
+            margin: 10px 0;
+            color: #03045e; /* Azul profundo para títulos */
+        }
+
+        .noticia-principal p {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 15px;
+        }
+
+        /* Botões de Ação/Compartilhamento */
+        .botoes-acao {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px; /* Botões mais arredondados combinando com o tema fluído */
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-ler-mais { background-color: #0077b6; }
+        .btn-parceiro { background-color: #00b4d8; }
+        .btn-fonte { background-color: #90e0ef; color: #03045e; }
+
+        /* Barra Lateral (Direita) */
+        aside {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 119, 182, 0.08);
+            height: fit-content;
+        }
+
+        aside h3 {
+            border-bottom: 2px solid #0077b6;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            font-family: 'Georgia', serif;
+            color: #03045e;
+        }
+
+        .aside-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .link-lateral {
+            display: block;
+            color: #4a5568;
+            text-decoration: none;
+            padding: 12px 0;
+            border-bottom: 1px solid #edf2f7;
+            font-size: 0.95rem;
+            transition: color 0.2s, padding-left 0.2s;
+        }
+
+        .link-lateral:hover {
+            color: #00b4d8;
+            padding-left: 5px;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #03045e;
+            color: #fff;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade para Telas Menores */
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+            .nav-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav-container li a {
+                border-bottom: 1px solid #0096c7;
+            }
+            .noticia-principal img {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">A Hidratação Diária</a>
+        <div class="data-atual" id="data-box">Carregando data...</div>
+    </header>
+
+    <nav>
+        <ul class="nav-container">
+            <li><a href="#">Home</a></li>
+            <li><a href="https://www.saude.df.gov.br" target="_blank" rel="noopener noreferrer">Portal da Saúde</a></li>
+            <li><a href="https://www.gloria.com.br" target="_blank" rel="noopener noreferrer">Bem Estar</a></li>
+            <li><a href="https://www.who.int" target="_blank" rel="noopener noreferrer">OMS (Organização Mundial da Saúde)</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-container">
+        
+        <main>
+            <article class="noticia-principal">
+                <img src="https://d2evkimvhatqav.cloudfront.net/images/bottled-water-poured-glass-37392749.jpg?v=1594930560" alt="Garrafa de água reutilizável com gotas de orvalho">
+                
+                <span class="categoria">Importância da Hidratação</span>
+                <h2>Importância da hidratação para o bem-estar físico e mental</h2>
+                <p>A água representa cerca de 60% do corpo humano e é o principal veículo para o funcionamento de todas as células. Beber água adequadamente é vital para regular a temperatura corporal, transportar nutrientes e eliminar toxinas. Na mente, atua diretamente no foco, equilíbrio do humor e controle do estresse.</p>
+                
+                <div class="botoes-acao">
+                    <a href="https://pt.wikipedia.org/wiki/Hidrata%C3%A3%C3%A3o" target="_blank" rel="noopener noreferrer" class="btn btn-ler-mais">
+                        Ler Artigo Científico
+                    </a>
+                    
+                    <a href="https://www.unicef.org" target="_blank" rel="noopener noreferrer" class="btn btn-parceiro">
+                        Campanhas de Água Potável
+                    </a>
+                    
+                    <a href="https://www.saude.gov.br" target="_blank" rel="noopener noreferrer" class="btn btn-fonte">
+                        Guia de Saúde do Governo
+                    </a>
+                </div>
+            </article>
+        </main>
+
+        <aside>
+            <h3>Estilo de Vida</h3>
+            <img class="aside-img" src="https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&q=80&w=400" alt="Pessoa se hidratando durante atividade física">
+            
+            <a href="https://www.youtube.com/watch?v=PywwzLYMkuI" target="_blank" rel="noopener noreferrer" class="link-lateral">» Assistir: Quantos litros beber por dia?</a>
+            <a href="https://www.nytimes.com" target="_blank" rel="noopener noreferrer" class="link-lateral">» Dicas do The New York Times</a>
+            <a href="https://www.bbc.com/portuguese" target="_blank" rel="noopener noreferrer" class="link-lateral">» BBC Saúde: Mitos sobre a Água</a>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 A Hidratação Diária. Todos os direitos reservados à sua saúde.</p>
+    </footer>
+
+    <script>
+        const opcoes = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('data-box').innerText = new Date().toLocaleDateString('pt-BR', opcoes);
+    </script>
+
+</body>
+</html>
